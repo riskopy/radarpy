@@ -1,5 +1,5 @@
 # radarpy
-Radarpy helps system admins and researchers map our an infrastructure's install base. It's a cross-platform program that runs in the background, and checks for installed applications, services and commands (Windows, OS X and Linux). This helps in aggregating installations of various programs and their versions for detecting vulnerable installations, policy compliance or software research. The application list can then be exported to JSON, XML, CSV or transfered to service accepting requests. 
+Radarpy helps system admins and researchers map our an infrastructure's install base. It's a cross-platform program (currently only OS X) that runs in the background, and checks for installed applications, services and commands. This helps in aggregating installations of various programs and their versions for detecting vulnerable installations, policy compliance, asset management, project management and software research. The application list can then be exported to JSON, XML, CSV or transfered to service accepting requests. We also are looking to add port scanning functionality to map open ports on the machines. 
 
 ## Requirements
 Packages required:
@@ -9,6 +9,7 @@ Packages required:
 Most of the program calls on the Python standard library.
 
 ## Immediate To Do 
+
 - Build Windows application detection
 - Build Linux application detection
 - Export application list to JSON
@@ -20,6 +21,7 @@ Most of the program calls on the Python standard library.
 Always looking for contributions. So please refer to the To Do above, or please feel free to suggest.
 
 How to contribute:
+
 1. Fork radarpy
 2. Create a branch (git checkout -b my_radarpy)
 3. Commit your changes (git commit -am "Added lasers. Pew pew pew!")
