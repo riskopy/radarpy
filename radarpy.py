@@ -28,8 +28,8 @@ sysProfile['processor'] = sysUname[5]
 def applicationCollectMac(): #Developed the OS X function first because I have a Mac! 
     appArray = []
     # Execute system profiler
-    # appCollect = Popen (["system_profiler", "-detailLevel", "full", "SPApplicationsDataType", "-xml"], stdout = PIPE).communicate()[0]
-    appCollect = open("osx_sample_system_profiler_output.xml") # Run sample profiler output as the system_profileer command is a little slow 
+    appCollect = Popen (["system_profiler", "-detailLevel", "full", "SPApplicationsDataType", "-xml"], stdout = PIPE).communicate()[0]
+    # appCollect = open("platform_sample_files/osx_sample_system_profiler_output.xml") # Run sample profiler output as the system_profileer command is a little slow 
     xmlApp = appCollect.read()
     xmlTree = etree.parse(StringIO(xmlApp))
     xmlContext = etree.iterparse(StringIO(xmlApp))
@@ -99,6 +99,7 @@ if sysUname[0] == "Linux":
     sysProfile['platformVersion'] = sysLinux[1]
     if sysProfile['distro'] == "Ubuntu" or sysProfile['distro'] == "Debian":
         appCollect = Popen (["dpkg", "--list"], stdout = PIPE).communicate()[0]
+        # appCollect = open("platform_sample_files/ubuntu_sample_dpkg_list.txt") # Run sample profiler output as the system_profileer command is a little slow 
         print appCollect # Need to include parser
 
 
