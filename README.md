@@ -24,7 +24,7 @@ How to contribute:
 
 1. Fork radarpy
 2. Create a branch (git checkout -b my_radarpy)
-3. Commit your changes (git commit -am "Added lasers. Pew pew pew!")
+3. Commit your changes (git commit -a -m "Added lasers. Pew pew pew!")
 4. Push to the branch (git push origin my_radarpy)
 5. Open a Pull Request
 6. Enjoy the liberating sensation of open source and wait

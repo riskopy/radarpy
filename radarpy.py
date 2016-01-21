@@ -12,14 +12,20 @@ import json
 sysPlatform = platform.platform()
 sysUname = platform.uname()
 
+sysProfile = {}
+
 try: 
     sysMac = platform.mac_ver()
+    sysProfile['platformVersion'] = str(sysMac[0])
 except:
     sysLinux = platform.linux_distribution()
 else:
     sysLinux = False
 
-sysProfile = {}
+sysProfile['hostName'] = sysUname[1]
+sysProfile['releaseVersion'] = sysUname[2]
+sysProfile['machine'] = sysUname[4]
+sysProfile['processor'] = sysUname[5]
 
 def applicationCollectMac(): #Developed the OS X function first because I have a Mac! 
     appArray = []
@@ -83,12 +89,7 @@ if sysUname[0] == "Windows":
 
 if sysUname[0] == "Darwin" or sysMac == True:
     print "We've got a Mac machine running OS X "+str(sysMac[0])
-    sysProfile['hostName'] = sysUname[1]
-    sysProfile['releaseVersion'] = sysUname[2]
     sysProfile['platform'] = "OS X"
-    sysProfile['platformVersion'] = str(sysMac[0])
-    sysProfile['machine'] = sysUname[4]
-    sysProfile['processor'] = sysUname[5]
     appArray = applicationCollectMac()
     sysProfile['appArray'] = str(appArray)
 
@@ -97,6 +98,6 @@ if sysLinux == True:
 
 
 if sysProfile:
-    url = 'http://127.0.0.1/'
+    url = 'http://127.0.0.1:8080/collector/'
     sendApplicationList(url)
 
