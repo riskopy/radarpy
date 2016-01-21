@@ -18,9 +18,7 @@ try:
     sysMac = platform.mac_ver()
     sysProfile['platformVersion'] = str(sysMac[0])
 except:
-    sysLinux = platform.linux_distribution()
-else:
-    sysLinux = False
+    pass
 
 sysProfile['hostName'] = sysUname[1]
 sysProfile['releaseVersion'] = sysUname[2]
@@ -93,11 +91,16 @@ if sysUname[0] == "Darwin" or sysMac == True:
     appArray = applicationCollectMac()
     sysProfile['appArray'] = str(appArray)
 
-if sysLinux == True:
+if sysUname[0] == "Linux":
     print "We've got a Linux machine!"
+    sysProfile['platform'] = "Linux"
+    sysLinux = platform.linux_distribution(full_distribution_name=1)
+    sysProfile['distro'] = sysLinux[0]
+    sysProfile['platformVersion'] = sysLinux[1]
+    if sysProfile['distro'] == "Ubuntu" or sysProfile['distro'] == "Debian":
+        appCollect = Popen (["dpkg", "--list"], stdout = PIPE).communicate()[0]
+        print appCollect # Need to include parser
 
 
-if sysProfile:
-    url = 'http://127.0.0.1:8080/collector/'
-    sendApplicationList(url)
+# Optional to use sendApplicationList to a service
 
